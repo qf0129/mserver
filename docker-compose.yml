@@ -1,7 +1,6 @@
 version: '3'
 services:
     mserver_server:
-        container_name: mserver_server
         ports:
             - "7777:7777"
         build:
