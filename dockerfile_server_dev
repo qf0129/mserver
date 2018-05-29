@@ -1,0 +1,17 @@
+From python:2.7-alpine
+
+RUN mkdir /app  
+WORKDIR /app
+
+ADD . /app
+
+# Install python2 
+# RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && apk update && apk add --no-cache python
+
+# Install pip
+# RUN wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm get-pip.py
+
+# Install python package
+RUN pip install -r requirements.txt --trusted-host mirrors.aliyun.com  -i http://mirrors.aliyun.com/pypi/simple
+
+CMD scripts/server_dev.sh
