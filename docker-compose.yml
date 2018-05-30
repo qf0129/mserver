@@ -1,9 +1,17 @@
 version: '3'
 services:
-    mserver_server:
+
+
+    mysql:
+        image: mysql:5.7
+        environment:
+         - MYSQL_ROOT_PASSWORD=root
+         - MYSQL_DATABASE=root
+
+
+    mserver:
         ports:
             - "7777:7777"
         build:
             context: .
-            dockerfile: dockerfile_server
-    # vault1:
+            dockerfile: dockerfile_server_dev
